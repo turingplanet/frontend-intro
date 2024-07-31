@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML, CSS, and JavaScript Demo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 80%;
+            margin: 2rem auto;
+            padding: 1rem;
+        }
+        h1 {
+            margin-bottom: 1rem;
+        }
+        .btn {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            margin-bottom: 1rem;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+        .lead {
+            font-size: 1.1rem;
+        }
+        .alert {
+            background-color: #cce5ff;
+            border: 1px solid #b8daff;
+            color: #004085;
+            padding: 1rem;
+            margin-top: 1rem;
+            border-radius: 0.25rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>HTML, CSS, and JavaScript Demo</h1>
+        
+        <button id="toggleBtn" class="btn">Toggle Paragraph</button>
+        
+        <p id="demoText" class="lead">
+            This is a demonstration of custom styling and JavaScript functionality.
+            Click the button above to toggle this paragraph's visibility.
+        </p>
+        
+        <div class="alert">
+            This is a custom styled alert. It's styled using CSS!
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var toggleBtn = document.getElementById('toggleBtn');
+            var demoText = document.getElementById('demoText');
+
+            toggleBtn.addEventListener('click', function() {
+                if (demoText.style.display === 'none') {
+                    fadeIn(demoText);
+                } else {
+                    fadeOut(demoText);
+                }
+            });
+
+            function fadeOut(element) {
+                var opacity = 1;
+                var timer = setInterval(function() {
+                    if (opacity <= 0.1) {
+                        clearInterval(timer);
+                        element.style.display = 'none';
+                    }
+                    element.style.opacity = opacity;
+                    opacity -= opacity * 0.1;
+                }, 10);
+            }
+
+            function fadeIn(element) {
+                var opacity = 0.1;
+                element.style.display = 'block';
+                var timer = setInterval(function() {
+                    if (opacity >= 1) {
+                        clearInterval(timer);
+                    }
+                    element.style.opacity = opacity;
+                    opacity += opacity * 0.1;
+                }, 10);
+            }
+        });
+    </script>
+</body>
+</html>
